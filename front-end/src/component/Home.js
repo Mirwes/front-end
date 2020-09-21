@@ -1,15 +1,18 @@
 import React from 'react';
 import '../App.css';
 import Cards from './Cards';
+import Footer from './Footer';
 import { Link } from 'react-router-dom';
+
 
 function Home () {
     return (
         <>
 
-        <div>
-            <h1>Choice Your Favorite Workout!</h1>
+        <div className="class_search">
+           
            <Cards />
+           <Footer />
            <Link to='/clientsignup'>
                 <button>Client Sign-Up</button>
            </Link>
