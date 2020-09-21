@@ -13,7 +13,7 @@ function Home () {
            <Link to='/clientsignup'>
                 <button>Client Sign-Up</button>
            </Link>
-           <Link to='instructorsignup'>
+           <Link to='/instructorsignup'>
                 <button>Instructor Sign-Up</button>
            </Link>
         </div>

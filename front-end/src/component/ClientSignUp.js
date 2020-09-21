@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import axios from 'axios';
 // import NamePhoneEmail from './NamePhoneEmail';
 
 
@@ -17,6 +18,10 @@ const StyledForm = styled.form`
 
 const StyledInput = styled.input`
     margin: 5px 0;
+`
+
+const StyledLabel = styled.label`
+    display: block;
 `
 
 
@@ -48,16 +53,31 @@ const ClientSignUp = () => {
         const newStateObj = {...client, [event.target.name]:
             event.target.type === 'checkbox' ? event.target.checked : event.target.value }
         setClient(newStateObj)
-        console.log(newStateObj);
+        // console.log(newStateObj);
     }
+
+    // function submitForm (event) {
+    //     event.preventDefault()
+        
+    //     axios
+    //     .post('https://reqres.in/api/users', client)
+    //     .then(response => {
+    //         setClient(response.data);
+    //     })
+    //     .catch(error => {
+    //         console.log(error);
+    //     })
+
+    //     setClient(initialState);
+    // }
 
 
 
     return (
         <WrapperDiv>
             <h1>Client Sign-up Form</h1>
-            <StyledForm>
-            <label htmlFor='first-name'>First Name: </label>
+            <StyledForm onSubmit= ''>
+            <StyledLabel htmlFor='first-name'>First Name: 
                     <StyledInput 
                         id='first-name'
                         type='text'
@@ -65,7 +85,8 @@ const ClientSignUp = () => {
                         onChange={handleChanges}
                         // value={}
                     />
-                    <label htmlFor='last-name'>Last Name: </label>
+                    </StyledLabel>
+                    <StyledLabel htmlFor='last-name'>Last Name: 
                     <StyledInput 
                         id='last-name'
                         type='text'
@@ -73,8 +94,9 @@ const ClientSignUp = () => {
                         onChange={handleChanges}
                         // value={}
                     />
+                    </StyledLabel>
 
-                    <label htmlFor='phone-number'>Phone Number:</label>
+                    <StyledLabel htmlFor='phone-number'>Phone Number:
                     <StyledInput 
                         id='phone-number'
                         type='tel'
@@ -82,9 +104,10 @@ const ClientSignUp = () => {
                         onChange={handleChanges}
                         // value={}
                     />
+                    </StyledLabel>
                     
                         
-                        {/* <label htmlFor='mobile'>Mobile </label>
+                        {/* <StyledLabel htmlFor='mobile'>Mobile </StyledLabel>
                         <StyledInput 
                             id='mobile'
                             type='radio'
@@ -92,7 +115,7 @@ const ClientSignUp = () => {
                             onChange={handleChanges}
                             // value={}
                         />
-                        <label htmlFor='home'>Home </label>
+                        <StyledLabel htmlFor='home'>Home </StyledLabel>
                         <StyledInput 
                             id='home'
                             type='radio'
@@ -100,7 +123,7 @@ const ClientSignUp = () => {
                             onChange={handleChanges}
                             // value={}
                         />
-                        <label htmlFor='business'>Business </label>
+                        <StyledLabel htmlFor='business'>Business </StyledLabel>
                         <StyledInput 
                             id='business'
                             type='radio'
@@ -109,7 +132,7 @@ const ClientSignUp = () => {
                             // value={}
                         /> */}
 
-                    <label htmlFor='email'>Email: </label>
+                    <StyledLabel htmlFor='email'>Email: 
                     <StyledInput 
                         id='email'
                         type='email'
@@ -117,9 +140,10 @@ const ClientSignUp = () => {
                         onChange={handleChanges}
                         // value={}
                     />
+                    </StyledLabel>
 
                 <h1>Billing Information</h1>
-                <label htmlFor='street-address'>Street Address: </label>
+                <StyledLabel htmlFor='street-address'>Street Address: 
                 <StyledInput 
                     id='street-address'
                     type='text'
@@ -127,7 +151,8 @@ const ClientSignUp = () => {
                     onChange={handleChanges}
                     // value={}
                 /><br />
-                <label htmlFor='city'>City: </label>
+                </StyledLabel>
+                <StyledLabel htmlFor='city'>City: 
                 <StyledInput 
                     id='city'
                     type='text'
@@ -135,6 +160,7 @@ const ClientSignUp = () => {
                     onChange={handleChanges}
                     // value={}
                 />
+                </StyledLabel>
                 <label htmlFor='state'>State: </label>
                 <select id='state' name='state' onChange={handleChanges}>
                         <option value="AL">Alabama</option>
@@ -189,7 +215,7 @@ const ClientSignUp = () => {
                         <option value="WI">Wisconsin</option>
                         <option value="WY">Wyoming</option>
                     </select><br />
-                <label htmlFor='card-number'>Card Number: </label>
+                <StyledLabel htmlFor='card-number'>Card Number: 
                 <input 
                     id='card-number'
                     type='number'
@@ -197,7 +223,8 @@ const ClientSignUp = () => {
                     onChange={handleChanges}
                     // value={}
                 /><br />
-                <label htmlFor='expiration-date'>Expiration Date: </label>
+                </StyledLabel>
+                <StyledLabel htmlFor='expiration-date'>Expiration Date: 
                 <input 
                     id='expiration-date'
                     type='date'
@@ -206,15 +233,17 @@ const ClientSignUp = () => {
                     onChange={handleChanges}
                     // value={}
                 /><br />
+                </StyledLabel>
                 <div id='termsAndConditions'>
-                    <label htmlFor='terms-and-conditions'>Yes, I Accept</label>
+                    <StyledLabel htmlFor='terms-and-conditions'><p>Yes, I Accept the terms and conditions</p>
                     <input 
                         id='terms-and-conditions'
                         type='checkbox'
                         name='tAndC'
                         onChange={handleChanges}
                         // value={}
-                    /><p>Yes, I accept the Terms and Conditions</p>
+                    />
+                    </StyledLabel>
                     
                 </div>
                 <button type='submit'>Sign Up</button>
