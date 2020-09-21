@@ -1,14 +1,16 @@
 import React from 'react';
 import '../App.css';
 import Cards from './Cards';
+import Footer from './Footer';
 
 function Home () {
     return (
         <>
 
-        <div>
-            <h1>Choice Your Favorite Workout!</h1>
+        <div className="class_search">
+           
            <Cards />
+           <Footer />
         </div>
         </>
     );

@@ -5,6 +5,8 @@ import CardItem from './CardItem';
 function Cards() {
   return (
     <div className='cards'>
+       <h1>Class Search</h1>
+            <h3>Select Class Type:</h3>
       
       <div className='cards__container'>
         <div className='cards__wrapper'>
@@ -16,7 +18,7 @@ function Cards() {
               Live Streamed Mixed Levels via Zoom
               
               Please contact Bev for private sessions in Walnut Creek or in your home.'
-              label='Yoga'
+              label='Yoga    '
               path='/yoga'
             />
 
