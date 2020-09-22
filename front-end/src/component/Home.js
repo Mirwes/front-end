@@ -10,15 +10,15 @@ function Home () {
         <>
 
         <div className="class_search">
-           
-           <Cards />
-           <Footer />
-           <Link to='/clientsignup'>
+            <Link to='/clientsignup'>
                 <button>Client Sign-Up</button>
            </Link>
            <Link to='/instructorsignup'>
                 <button>Instructor Sign-Up</button>
            </Link>
+           <Cards />
+           <Footer />
+
         </div>
         </>
     );

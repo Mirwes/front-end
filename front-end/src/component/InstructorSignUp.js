@@ -20,7 +20,9 @@ const StyledInput = styled.input`
     margin: 5px 0;
 `
 
-
+const StyledLabel = styled.label`
+    display: block;
+`
 
 
 
@@ -42,97 +44,77 @@ const InstructorSignUp = () => {
         tAndC: ''
     }
 
-    const [client, setClient] = useState(initialState)
+    const [post, setPost] = useState([])
+    const [instructor, setInstructor] = useState(initialState)
     const [error, setErrors] = useState(initialState)
 
     const handleChanges = (event) => {
-        const newStateObj = {...client, [event.target.name]:
+        const newStateObj = {...instructor, [event.target.name]:
             event.target.type === 'checkbox' ? event.target.checked : event.target.value }
-        setClient(newStateObj)
+        setInstructor(newStateObj)
         // console.log(newStateObj);
     }
 
-    // function submitForm (event) {
-    //     event.preventDefault()
+    function submitForm (event) {
+        event.preventDefault()
         
-    //     axios
-    //     .post('https://reqres.in/api/users', client)
-    //     .then(response => {
-    //         console.log(response.data);
-    //     })
-    //     .catch(error => {
-    //         console.log(error);
-    //     })
+        axios
+        .post('https://reqres.in/api/users', instructor)
+        .then(response => {
+            setPost(response.data);
+            setInstructor(initialState);
+        })
+        .catch(error => {
+            console.log(error);
+        })
 
-    //     setClient(initialState);
-    // }
+        setInstructor(initialState);
+    }
 
 
 
     return (
         <WrapperDiv>
             <h1>Instructor Sign-up Form</h1>
-            <StyledForm onSubmit=''>
-            <label htmlFor='first-name'>First Name: </label>
+            <StyledForm onSubmit={submitForm}>
+                    <StyledLabel htmlFor='first-name'>First Name:  
                     <StyledInput 
                         id='first-name'
                         type='text'
                         name='firstName'
                         onChange={handleChanges}
-                        // value={}
+                        value={instructor.firstName}
                     />
-                    <label htmlFor='last-name'>Last Name: </label>
+                    </StyledLabel>
+                    <StyledLabel htmlFor='last-name'>Last Name: 
                     <StyledInput 
                         id='last-name'
                         type='text'
                         name='lastName'
                         onChange={handleChanges}
-                        // value={}
+                        value={instructor.lastName}
                     />
-
-                    <label htmlFor='phone-number'>Phone Number:</label>
+                    </StyledLabel>
+                    <StyledLabel htmlFor='phone-number'>Phone Number: 
                     <StyledInput 
                         id='phone-number'
                         type='tel'
                         name='phoneNumber'
                         onChange={handleChanges}
-                        // value={}
+                        value={instructor.phoneNumber}
                     />
-                    
-                        
-                        {/* <label htmlFor='mobile'>Mobile </label>
-                        <StyledInput 
-                            id='mobile'
-                            type='radio'
-                            name='mobile'
-                            onChange={handleChanges}
-                            // value={}
-                        />
-                        <label htmlFor='home'>Home </label>
-                        <StyledInput 
-                            id='home'
-                            type='radio'
-                            name='home'
-                            onChange={handleChanges}
-                            // value={}
-                        />
-                        <label htmlFor='business'>Business </label>
-                        <StyledInput 
-                            id='business'
-                            type='radio'
-                            name='business'
-                            onChange={handleChanges}
-                            // value={}
-                        /> */}
-
-                    <label htmlFor='email'>Email: </label>
+                    </StyledLabel>
+                    <StyledLabel htmlFor='email'>Email: 
                     <StyledInput 
                         id='email'
                         type='email'
                         name='email'
                         onChange={handleChanges}
-                        // value={}
+                        value={instructor.email}
                     />
+                    </StyledLabel>
+                    <button type='submit'>Sign Up</button>
+                    <pre>{JSON.stringify(post, null, 2)}</pre>
             </StyledForm>
         </WrapperDiv>
     )
