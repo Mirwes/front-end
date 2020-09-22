@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
-// import NamePhoneEmail from './NamePhoneEmail';
+
 
 
 
@@ -31,7 +31,7 @@ const StyledLabel = styled.label`
 const ClientSignUp = () => {
 
     const initialState = {
-        firstName: '',
+        firstName: "",
         lastName: '',
         phoneNumber: '',
         mobile: '',
@@ -48,42 +48,44 @@ const ClientSignUp = () => {
 
     const [client, setClient] = useState(initialState)
     const [error, setErrors] = useState(initialState)
+    const [post ,setPost] = useState([])
 
     const handleChanges = (event) => {
-        const newStateObj = {...client, [event.target.name]:
-            event.target.type === 'checkbox' ? event.target.checked : event.target.value }
-        setClient(newStateObj)
-        // console.log(newStateObj);
+        const newFormData = {
+            ...client, 
+            [event.target.name]: event.target.type === 'checkbox' ? event.target.checked : event.target.value
+        }
+        setClient(newFormData);
+        // console.log(client);
     }
 
-    // function submitForm (event) {
-    //     event.preventDefault()
+    function submitForm (event) {
+        event.preventDefault()
         
-    //     axios
-    //     .post('https://reqres.in/api/users', client)
-    //     .then(response => {
-    //         setClient(response.data);
-    //     })
-    //     .catch(error => {
-    //         console.log(error);
-    //     })
-
-    //     setClient(initialState);
-    // }
+        axios
+        .post('https://anytime-fitness-database.herokuapp.com/api/fitness/register', client)
+        .then(response => {
+            setPost(response.data);
+            setClient(initialState)
+        })
+        .catch(error => {
+            console.log(error);
+        })
+    }
 
 
 
     return (
         <WrapperDiv>
             <h1>Client Sign-up Form</h1>
-            <StyledForm onSubmit= ''>
+            <StyledForm onSubmit= {submitForm}>
             <StyledLabel htmlFor='first-name'>First Name: 
                     <StyledInput 
                         id='first-name'
                         type='text'
                         name='firstName'
                         onChange={handleChanges}
-                        // value={}
+                        value={client.firstName}
                     />
                     </StyledLabel>
                     <StyledLabel htmlFor='last-name'>Last Name: 
@@ -92,7 +94,7 @@ const ClientSignUp = () => {
                         type='text'
                         name='lastName'
                         onChange={handleChanges}
-                        // value={}
+                        value={client.lastName}
                     />
                     </StyledLabel>
 
@@ -102,7 +104,7 @@ const ClientSignUp = () => {
                         type='tel'
                         name='phoneNumber'
                         onChange={handleChanges}
-                        // value={}
+                        value={client.phoneNumber}
                     />
                     </StyledLabel>
                     
@@ -138,7 +140,7 @@ const ClientSignUp = () => {
                         type='email'
                         name='email'
                         onChange={handleChanges}
-                        // value={}
+                        value={client.email}
                     />
                     </StyledLabel>
 
@@ -149,7 +151,7 @@ const ClientSignUp = () => {
                     type='text'
                     name='address'
                     onChange={handleChanges}
-                    // value={}
+                    value={client.address}
                 /><br />
                 </StyledLabel>
                 <StyledLabel htmlFor='city'>City: 
@@ -158,7 +160,7 @@ const ClientSignUp = () => {
                     type='text'
                     name='city'
                     onChange={handleChanges}
-                    // value={}
+                    value={client.city}
                 />
                 </StyledLabel>
                 <label htmlFor='state'>State: </label>
@@ -221,7 +223,7 @@ const ClientSignUp = () => {
                     type='number'
                     name='state'
                     onChange={handleChanges}
-                    // value={}
+                    value={client.cardNumber}
                 /><br />
                 </StyledLabel>
                 <StyledLabel htmlFor='expiration-date'>Expiration Date: 
@@ -231,7 +233,7 @@ const ClientSignUp = () => {
                     name='expDate'
                     // max={new Date(year, month, day)}
                     onChange={handleChanges}
-                    // value={}
+                    value={client.expirationDate}
                 /><br />
                 </StyledLabel>
                 <div id='termsAndConditions'>
@@ -241,16 +243,17 @@ const ClientSignUp = () => {
                         type='checkbox'
                         name='tAndC'
                         onChange={handleChanges}
-                        // value={}
+                        checked={client.tAndC}
                     />
                     </StyledLabel>
                     
                 </div>
+                <pre>{JSON.stringify(post, null, 2)}</pre>
                 <button type='submit'>Sign Up</button>
             </StyledForm>
         </WrapperDiv>
     )
-
+                        
 }
 
 export default ClientSignUp;
