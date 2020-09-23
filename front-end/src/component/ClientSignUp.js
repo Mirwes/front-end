@@ -28,45 +28,36 @@ const StyledLabel = styled.label`
 
 
 
-const ClientSignUp = () => {
+const UserSignUp = () => {
 
     const initialState = {
-        firstName: "",
-        lastName: '',
-        phoneNumber: '',
-        mobile: '',
-        home: '',
-        business: '',
-        email: '',
-        address: '',
-        city: '',
-        state: '',
-        cardNumber: '',
-        expirationDate: '',
-        tAndC: ''
+        name: "",
+        username: "",
+        password: "",
+        role: "",
     }
 
-    const [client, setClient] = useState(initialState)
-    const [error, setErrors] = useState(initialState)
-    const [post ,setPost] = useState([])
+    const [user, setUser] = useState(initialState)
+    // const [error, setErrors] = useState(initialState)
+    const [post, setPost] = useState([])
 
     const handleChanges = (event) => {
         const newFormData = {
-            ...client, 
-            [event.target.name]: event.target.type === 'checkbox' ? event.target.checked : event.target.value
+            ...user, 
+            [event.target.name] : event.target.value
         }
-        setClient(newFormData);
-        // console.log(client);
+        setUser(newFormData);
     }
 
     function submitForm (event) {
         event.preventDefault()
+        console.log(user)
         
         axios
-        .post('https://anytime-fitness-database.herokuapp.com/api/fitness/register', client)
+        .post('https://anytime-fitness-database.herokuapp.com/api/fitness/register', user)
         .then(response => {
             setPost(response.data);
-            setClient(initialState)
+            setUser(initialState)
         })
         .catch(error => {
             console.log(error);
@@ -77,80 +68,52 @@ const ClientSignUp = () => {
 
     return (
         <WrapperDiv>
-            <h1>Client Sign-up Form</h1>
+            <h1>User Sign-up Form</h1>
             <StyledForm onSubmit= {submitForm}>
-            <StyledLabel htmlFor='first-name'>First Name: 
+            <StyledLabel htmlFor='name'>Name: 
                     <StyledInput 
-                        id='first-name'
+                        id='name'
                         type='text'
-                        name='firstName'
+                        name='name'
                         onChange={handleChanges}
-                        value={client.firstName}
-                    />
-                    </StyledLabel>
-                    <StyledLabel htmlFor='last-name'>Last Name: 
-                    <StyledInput 
-                        id='last-name'
-                        type='text'
-                        name='lastName'
-                        onChange={handleChanges}
-                        value={client.lastName}
-                    />
-                    </StyledLabel>
-
-                    <StyledLabel htmlFor='phone-number'>Phone Number:
-                    <StyledInput 
-                        id='phone-number'
-                        type='tel'
-                        name='phoneNumber'
-                        onChange={handleChanges}
-                        value={client.phoneNumber}
+                        value={user.name}
                     />
                     </StyledLabel>
                     
-                        
-                        {/* <StyledLabel htmlFor='mobile'>Mobile </StyledLabel>
-                        <StyledInput 
-                            id='mobile'
-                            type='radio'
-                            name='mobile'
-                            onChange={handleChanges}
-                            // value={}
-                        />
-                        <StyledLabel htmlFor='home'>Home </StyledLabel>
-                        <StyledInput 
-                            id='home'
-                            type='radio'
-                            name='home'
-                            onChange={handleChanges}
-                            // value={}
-                        />
-                        <StyledLabel htmlFor='business'>Business </StyledLabel>
-                        <StyledInput 
-                            id='business'
-                            type='radio'
-                            name='business'
-                            onChange={handleChanges}
-                            // value={}
-                        /> */}
-
-                    <StyledLabel htmlFor='email'>Email: 
+                    <StyledLabel htmlFor='username'>Username: 
                     <StyledInput 
-                        id='email'
-                        type='email'
-                        name='email'
+                        id='username'
+                        type='username'
+                        name='username'
                         onChange={handleChanges}
-                        value={client.email}
+                        value={user.username}
                     />
                     </StyledLabel>
 
-                <h1>Billing Information</h1>
+                    <StyledLabel htmlFor='password'>Password
+                        <StyledInput 
+                            id='password'
+                            type='password'
+                            name='password'
+                            onChange={handleChanges}
+                            value={user.password}
+                        />
+                    </StyledLabel>
+
+                    <StyledLabel htmlFor='role'>Role:
+                    <select id='role' name='role' onChange={handleChanges} value={user.role}>
+                        <option>Select your role</option>
+                        <option value='client'>Client</option>
+                        <option value='instructor'>Instructor</option>
+                    </select>
+                    </StyledLabel>
+
+                {/* <h1>Billing Information</h1>
                 <StyledLabel htmlFor='street-address'>Street Address: 
                 <StyledInput 
                     id='street-address'
                     type='text'
                     name='address'
-                    onChange={handleChanges}
                     value={client.address}
                 /><br />
                 </StyledLabel>
@@ -159,12 +122,11 @@ const ClientSignUp = () => {
                     id='city'
                     type='text'
                     name='city'
-                    onChange={handleChanges}
                     value={client.city}
                 />
                 </StyledLabel>
                 <label htmlFor='state'>State: </label>
-                <select id='state' name='state' onChange={handleChanges}>
+                <select id='state' name='state'>
                         <option value="AL">Alabama</option>
                         <option value="AK">Alaska</option>
                         <option value="AZ">Arizona</option>
@@ -217,37 +179,17 @@ const ClientSignUp = () => {
                         <option value="WI">Wisconsin</option>
                         <option value="WY">Wyoming</option>
                     </select><br />
-                <StyledLabel htmlFor='card-number'>Card Number: 
-                <input 
-                    id='card-number'
-                    type='number'
-                    name='state'
-                    onChange={handleChanges}
-                    value={client.cardNumber}
-                /><br />
-                </StyledLabel>
-                <StyledLabel htmlFor='expiration-date'>Expiration Date: 
-                <input 
-                    id='expiration-date'
-                    type='date'
-                    name='expDate'
-                    // max={new Date(year, month, day)}
-                    onChange={handleChanges}
-                    value={client.expirationDate}
-                /><br />
-                </StyledLabel>
                 <div id='termsAndConditions'>
                     <StyledLabel htmlFor='terms-and-conditions'><p>Yes, I Accept the terms and conditions</p>
                     <input 
                         id='terms-and-conditions'
                         type='checkbox'
                         name='tAndC'
-                        onChange={handleChanges}
                         checked={client.tAndC}
                     />
-                    </StyledLabel>
+                    </StyledLabel> */}
                     
-                </div>
+                {/* </div> */}
                 <pre>{JSON.stringify(post, null, 2)}</pre>
                 <button type='submit'>Sign Up</button>
             </StyledForm>
@@ -256,4 +198,4 @@ const ClientSignUp = () => {
                         
 }
 
-export default ClientSignUp;
+export default UserSignUp;
