@@ -5,8 +5,7 @@ import Home from './component/Home';
 import Running from './component/Running';
 import Boxing from './component/Boxing';
 import Cardio from './component/Cardio';
-import InstructorSignUp from './component/InstructorSignUp';
-import ClientSignUp from './component/ClientSignUp';
+import UserSignUp from './component/ClientSignUp';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import './App.css';
 import WeightLifting from './component/WeightLifting';
@@ -22,8 +21,7 @@ function App() {
       <Route path='/running' component={Running}/>
       <Route path='/boxing' component={Boxing} />
       <Route path='/cardio' component={Cardio} />
-      <Route path='/clientsignup' component={ClientSignUp}/>
-      <Route path='/instructorsignup' component={InstructorSignUp} />
+      <Route path='/usersignup' component={UserSignUp}/>
       </Switch>
     </Router>
   );

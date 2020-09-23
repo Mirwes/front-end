@@ -10,7 +10,7 @@ function Home () {
         <>
 
         <div className="class_search">
-            <Link to='/clientsignup'>
+            <Link to='/usersignup'>
                 <button>Client Sign-Up</button>
            </Link>
            <Link to='/instructorsignup'>
