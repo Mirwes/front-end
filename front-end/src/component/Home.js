@@ -13,8 +13,8 @@ function Home () {
             <Link to='/usersignup'>
                 <button>Client Sign-Up</button>
            </Link>
-           <Link to='/instructorsignup'>
-                <button>Instructor Sign-Up</button>
+           <Link to='/addclass'>
+                <button>Add a Class</button>
            </Link>
            <Cards />
            <Footer />

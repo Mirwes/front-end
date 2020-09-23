@@ -32,11 +32,14 @@ const FitnessClass = () => {
 
     const initialState = {
         name: "",
-        startTime: '',
-        endTime: '',
-        teacher: '',
-        intensity: '',
-        description: '',
+        type: "",
+        intensity: "",
+        max_clients: "",
+        day: "",
+        start_time: "",
+        duration: "",
+        location: "",
+        instructor_id: ""
     }
 
     const [fitClass, setFitClass] = useState(initialState)
@@ -124,15 +127,6 @@ const FitnessClass = () => {
                         name='day'
                         onChange={handleChanges}
                         value={fitClass.day}
-                    />
-                    </StyledLabel>
-                    <StyledLabel htmlFor='start_time'>Start Time: 
-                    <StyledInput 
-                        id='start_time'
-                        type='text'
-                        name='start_time'
-                        onChange={handleChanges}
-                        value={fitClass.start_time}
                     />
                     </StyledLabel>
                     <StyledLabel htmlFor='duration'>Class Duration: 
