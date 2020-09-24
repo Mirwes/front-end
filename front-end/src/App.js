@@ -6,11 +6,19 @@ import Running from './component/Running';
 import Boxing from './component/Boxing';
 import Cardio from './component/Cardio';
 import UserSignUp from './component/ClientSignUp';
+<<<<<<< HEAD
 import AddFitnessClass from './component/AddClass';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import './App.css';
 import WeightLifting from './component/WeightLifting';
 import Classes from './component/Classes'
+=======
+// import FitnessClass from './component/Add-Update';
+import './App.css';
+import WeightLifting from './component/WeightLifting';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+
+>>>>>>> 4ead518f4d17cb1d94e666ef8e061f35db4c88a6
 
 function App() {
   return (
@@ -24,8 +32,12 @@ function App() {
       <Route path='/boxing' component={Boxing} />
       <Route path='/cardio' component={Cardio} />
       <Route path='/usersignup' component={UserSignUp}/>
+<<<<<<< HEAD
       <Route path='/addclass' component={AddFitnessClass}/>
       <Route path='/classes' component={Classes}/>
+=======
+      {/* <Route path='/addclass' component={FitnessClass}/> */}
+>>>>>>> 4ead518f4d17cb1d94e666ef8e061f35db4c88a6
       </Switch>
     </Router>
   );

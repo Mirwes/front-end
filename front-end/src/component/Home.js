@@ -18,7 +18,6 @@ function Home () {
            </Link>
            <Cards />
            <Footer />
-
         </div>
         </>
     );
