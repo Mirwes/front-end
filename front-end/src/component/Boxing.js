@@ -3,6 +3,9 @@ import'../App.css';
 
 export default function Boxing () {
     return (
-        <h1 className='boxing'>Boxing</h1>
+        <div className="banner">
+        <h1 className='title2'>Boxing</h1>
+        <img src='images/Rond1.jpg' alt="img"/>
+        </div>
     )
 }

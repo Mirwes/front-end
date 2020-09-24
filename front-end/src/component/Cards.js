@@ -26,7 +26,7 @@ function Cards() {
             />
 
             <CardItem
-              src='images/Arnold1.jpg'
+              src='images/arnold1.jpg'
               text='Bodybuilding is the use of progressive resistance exercise to control and develop ones musculature for aesthetic purposes. '
               label='WeightLifting'
               path='/weightlifting'

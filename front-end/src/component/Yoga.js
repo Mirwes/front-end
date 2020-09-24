@@ -3,6 +3,9 @@ import'../App.css';
 
 export default function Yoga () {
     return (
-        <h1 className='yoga'>Yoga</h1>
-    )
+        <div className="banner">
+        <h1 className='title2'>Yoga</h1>
+        <img src='images/yoga.jpg' alt="img"/>
+      </div>
+    );
 }
