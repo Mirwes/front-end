@@ -1,12 +1,15 @@
 import React from 'react';
 import './Cards.css';
 import CardItem from './CardItem';
+import Home2 from '../2ndComponent/Home2';
 
 function Cards() {
   return (
     <div className='cards'>
+        <Home2 />
        <h1>Class Search</h1>
             <h3>Select Class Type:</h3>
+          
       
       <div className='cards__container'>
         <div className='cards__wrapper'>
