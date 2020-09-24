@@ -28,7 +28,7 @@ const StyledLabel = styled.label`
 
 
 
-const FitnessClass = () => {
+const UpdateFitClass = () => {
 
     const initialState = {
         name: "",
@@ -43,8 +43,8 @@ const FitnessClass = () => {
     }
 
     const [fitClass, setFitClass] = useState(initialState)
-    const [error, setErrors] = useState(initialState)
-    const [post ,setPost] = useState([])
+    // const [error, setErrors] = useState(initialState)
+    // const [post ,setPost] = useState([])
 
 
     const handleChanges = (event) => {
@@ -59,10 +59,9 @@ const FitnessClass = () => {
         event.preventDefault()
         
         axios
-        .post('https://anytime-fitness-database.herokuapp.com/api/fitness/instructors/:instructorId/classes', fitClass)
+        .put('https://anytime-fitness-database.herokuapp.com/api/fitness/:instructorId/classes/:classId')
         .then(response => {
-            setPost(response.data);
-            setFitClass(initialState)
+            console.log(response)
         })
         .catch(error => {
             console.log(error);
@@ -73,7 +72,7 @@ const FitnessClass = () => {
 
     return (
         <WrapperDiv>
-            <h1>Add/Update a Class</h1>
+            <h1>Update a Class</h1>
             <StyledForm onSubmit= {submitForm}>
             <StyledLabel htmlFor='name'>Class Name: 
                     <StyledInput 
@@ -167,4 +166,4 @@ const FitnessClass = () => {
                         
 }
 
-export default FitnessClass;
+export default UpdateFitClass;
