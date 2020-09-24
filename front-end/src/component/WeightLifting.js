@@ -3,6 +3,9 @@ import'../App.css';
 
 export default function WeightLifting () {
     return (
-        <h1 className='weightlifting'>WeightLifting</h1>
+        <div className="banner"> 
+        <h1 className='title2'>WeightLifting</h1>
+        <img src='images/body5.jpg' />
+        </div>
     )
 }

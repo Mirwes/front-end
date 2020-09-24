@@ -3,6 +3,9 @@ import'../App.css';
 
 export default function Cardio () {
     return (
-        <h1 className='cardio'>Cardio</h1>
+        <div className="banner">
+        <h1 className="title2">Cardio</h1>
+        <img src='images/cardio.jpg' alt="img"/>
+        </div>
     )
 }
