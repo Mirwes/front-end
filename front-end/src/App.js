@@ -11,11 +11,8 @@ import AddFitnessClass from './component/AddClass';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import './App.css';
 import WeightLifting from './component/WeightLifting';
-import Classes from './component/Classes'
-=======
-import './App.css';
-import WeightLifting from './component/WeightLifting';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+
+
 
 
 function App() {
@@ -32,8 +29,6 @@ function App() {
       <Route path='/cardio' component={Cardio} />
       <Route path='/usersignup' component={UserSignUp}/>
       <Route path='/addclass' component={AddFitnessClass}/>
-      <Route path='/classes' component={Classes}/>
-
       </Switch>
     </Router>
   );

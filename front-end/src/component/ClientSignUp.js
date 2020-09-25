@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
+import ListOfInstructors from './listOfInstructors';
 
 
 
@@ -193,6 +194,7 @@ const UserSignUp = () => {
                 <pre>{JSON.stringify(post, null, 2)}</pre>
                 <button type='submit'>Sign Up</button>
             </StyledForm>
+            <ListOfInstructors />
         </WrapperDiv>
     )
                         
