@@ -9,16 +9,16 @@ import axios from 'axios';
 const WrapperDiv = styled.div`
     display: flex;
     flex-direction: column;
-    text-align: center;
+    text-align: right;
 `;
 
 const StyledForm = styled.form`
-    width: 50%;
+    width: 25%;
     margin: 0 auto;
 `
 
 const StyledInput = styled.input`
-    margin: 5px 0;
+    margin: 5px;
 `
 
 const StyledLabel = styled.label`
