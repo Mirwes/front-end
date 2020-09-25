@@ -1,42 +1,39 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
 
-const ListOfInstructors = () => {
-    const [instructor, setInstructors] = useState()
+function ListOfInstructors() {
+    // const [isLoaded, setIsLoaded] = useState(false);
+    const [instructor, setInstructors] = useState([]);
+    // const [error, setError] = useState(null);
 
-
-    // axios
-    //     .get('http://hp-api.herokuapp.com/api/characters')
-    //     .then(response => {
-    //         setInstructors(response.data)
-    //     })
-    //     .catch(error => {
-    //         console.log(error)
-    //     })
-
-
-
-
-
-
-
-
-
+    useEffect(async () => {
+        const response = await axios("http://hp-api.herokuapp.com/api/characters",
+        );
+           setInstructors(response.data);
+    }, [])
 
 
 
     return(
         <div>
-            <h1>Instructors</h1>
-            {/* {instructor.map(teacher => {
+            <h1>Our current instructors</h1>
+            <ul>
+                {instructor.map(item => (
+                    <li key={item.dateOfBirth}>
+                        {item.name} 
+                    </li>
+                ))}
+            </ul>
+            {/* {console.log(instructor)} */}
+             {/* {instructor.map(teacher => {
                 return(
                 <ul>
                     <li>{teacher}</li>
                 </ul>
                 )
-            })}
-        </div> */}
+            })} */}
+        </div>
     )    
 }
 
