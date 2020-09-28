@@ -34,6 +34,11 @@
   background-color: whitesmoke; 
 }
 
+.sign-up-btn {
+  margin-left: 10px;
+  display: block;
+}
+
 .class_search .p{
   text-align: center;
 }
